@@ -50,8 +50,6 @@ func main()  {
     for fileScanner.Scan() {
         textLine := fileScanner.Text()
 
-        //firstDigit := getFirstDigit(textLine)
-        //lastDigit := getLastDigit((textLine))
         firstDigitIntOrString := getFirstDigitIntOrString(textLine)
         lastDigitIntOrString := getLastDigitIntOrString(textLine)
 
