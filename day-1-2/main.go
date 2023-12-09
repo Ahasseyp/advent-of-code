@@ -11,7 +11,11 @@ import (
 func getFirstDigitIntOrString(s string) string {
     firstDigitIntOrStringMatch, _ := regexp2.Compile("(\\d{1}|one|two|three|four|five|six|seven|eight|nine)", 0)
     match, _ := firstDigitIntOrStringMatch.FindStringMatch(s)
-    return match.String()
+    if match != nil {
+        return match.String()
+    } else {
+        return ""
+    }
 }
 
 func getLastDigitIntOrString(s string) string {
@@ -21,6 +25,7 @@ func getLastDigitIntOrString(s string) string {
 }
 
 func main()  {
+
     readFile, err := os.Open("./input.txt")
 
     if err != nil {
@@ -51,9 +56,20 @@ func main()  {
         textLine := fileScanner.Text()
 
         firstDigitIntOrString := getFirstDigitIntOrString(textLine)
-        lastDigitIntOrString := getLastDigitIntOrString(textLine)
 
-        fmt.Println(textLine, firstDigitIntOrString, lastDigitIntOrString)
+        var lastDigitIntOrString string
+
+        for i := 0; i < len(textLine); i++ {
+            newTextLine := textLine[i:]
+            match := getFirstDigitIntOrString((newTextLine))
+            if match != "" {
+                lastDigitIntOrString = match
+            } else {
+                break
+            }
+        }
+
+        //fmt.Println(textLine, firstDigitIntOrString, lastDigitIntOrString)
 
         _, err := strconv.Atoi(firstDigitIntOrString)
 
@@ -77,7 +93,7 @@ func main()  {
 
         sum, err := strconv.Atoi(firstDigitChar+lastDigitChar)
 
-        fmt.Println(sum)
+        //fmt.Println(sum)
 
         totalSum += sum
     }
