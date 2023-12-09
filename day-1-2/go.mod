@@ -1,4 +1,4 @@
-module advent-of-code-2023/day-1-2
+module advent-of-code/day-1-2
 
 go 1.21.5
 
