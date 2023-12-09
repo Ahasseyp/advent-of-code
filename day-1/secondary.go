@@ -24,7 +24,7 @@ func getLastDigitIntOrString(s string) string {
     return match.String()
 }
 
-func main()  {
+func secondary()  {
 
     readFile, err := os.Open("./input.txt")
 

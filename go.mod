@@ -1,4 +1,4 @@
-module advent-of-code-2023/day-2-1
+module ahasseyp/advent-of-code
 
 go 1.21.5
 
