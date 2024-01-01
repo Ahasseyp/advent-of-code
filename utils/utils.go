@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"os"
 	"strconv"
+    "strings"
+
     "github.com/dlclark/regexp2"
 )
 
@@ -52,4 +54,16 @@ func Regexp2FindAllString(re *regexp2.Regexp, s string) []string {
 		m, _ = re.FindNextMatch(m)
 	}
 	return matches
+}
+
+func PadSlice(slice []string, char string) []string {
+    horizontalPaddingSlice := []string{strings.Repeat(char, len(slice[0]))}
+    slice = append(horizontalPaddingSlice, slice...)
+    slice = append(slice, horizontalPaddingSlice...)
+
+    for i, line := range slice {
+        slice[i] = "." + line + "."
+    }
+
+    return slice
 }
